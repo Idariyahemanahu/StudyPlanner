@@ -1,10 +1,22 @@
 ﻿@page
+@inject IConfiguration Configuration
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+    <h2>Database Configuration</h2>
+    
+    @{
+        var server = Configuration["Database:Source"];
+        var port = Configuration["Database:Port"];
+        var database = Configuration["Database:DatabaseName"];
+        var username = Configuration["Database:Username"];
+        var password = Configuration["Database:Password"];
+        var connectionString = $"Server={server};Port={port};Database={database};Uid={username};Pwd={password};";
+    }
+    
+    <p>Server: @server:@port</p>
+    <p>Database: @database</p>
+    <p>Username: @username</p>
+    <p>Password: @(string.IsNullOrEmpty(password) ? "Not configured" : "***configured***")</p>
+    <p>Connection String: @connectionString</p>
 </div>
