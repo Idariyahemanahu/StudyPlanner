@@ -5,6 +5,7 @@ bin/
 obj/
 [Bb]in/
 [Oo]bj/
+obj/
 
 # ===============================
 # User-Specific & IDE Files
