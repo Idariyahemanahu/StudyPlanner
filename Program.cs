@@ -1,8 +1,4 @@
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
 
 
 DotNetEnv.Env.Load();
@@ -22,9 +18,12 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Enable Swagger in development
-app.UseSwagger();
-app.UseSwaggerUI();
+// Enable Swagger only in development
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
