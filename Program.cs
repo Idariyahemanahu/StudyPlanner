@@ -1,5 +1,7 @@
+using CreateDbFromScratch.Model;
 using Microsoft.OpenApi.Models;
-
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 DotNetEnv.Env.Load();
 
@@ -16,6 +18,20 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddRazorPages();
 
+// Importing database configuration from appsettings.json
+var dbConfig = builder.Configuration.GetSection("Database");
+var server = dbConfig["Source"];
+var port = dbConfig["Port"];
+var database = dbConfig["DatabaseName"];
+var user = dbConfig["Username"];
+var password = dbConfig["Password"];
+
+// Construct the connection string using string interpolation
+var connectionString = $"server={server};port={port};database={database};user={user};password={password}";
+
+builder.Services.AddDbContext<UserContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
 var app = builder.Build();
 
 // Enable Swagger only in development
