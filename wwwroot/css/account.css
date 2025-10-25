@@ -1,0 +1,103 @@
+/* General Body Styling */
+body {
+    background: #083344 ;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* This stacks header, main, and footer vertically */
+    min-height: 100vh;
+}
+
+/* New rule to make the main content area fill space and center the card */
+main {
+    flex-grow: 1; /* Allows this section to expand and fill available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Card for Login/Register Forms */
+.account-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px; /* Increased width for labels */
+    text-align: left;
+}
+
+.account-card h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+/* FIX: Align Labels and Inputs using Flexbox */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    flex-basis: 120px; /* Assign a fixed base width for labels */
+    flex-shrink: 0;   /* Prevent labels from shrinking */
+    font-weight: 500;
+    padding-right: 1rem;
+    color: #333;
+}
+
+.form-control {
+    flex-grow: 1; /* Allow input to take up remaining space */
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    padding-left: 20px; /* Adjusted padding */
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+/* Button Styling */
+.btn-primary {
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #1e293b;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* FIX: Add spacing between button and link */
+.switch-form-link {
+    text-align: center;
+    margin-top: 1.5rem; /* This adds the needed space */
+    font-size: 0.9rem;
+}
+
+.switch-form-link a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-form-link a:hover {
+    text-decoration: underline;
+}
+
