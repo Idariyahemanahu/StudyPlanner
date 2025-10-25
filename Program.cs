@@ -17,7 +17,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRazorPages();
-
 // Importing database configuration from appsettings.json
 var dbConfig = builder.Configuration.GetSection("Database");
 var server = dbConfig["Source"];
@@ -32,7 +31,11 @@ var connectionString = $"server={server};port={port};database={database};user={u
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
+// Add Session Services
+builder.Services.AddSession();
+
 var app = builder.Build();
+
 
 // Enable Swagger only in development
 if (app.Environment.IsDevelopment())
@@ -55,7 +58,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//Enable Session Middleware
+app.UseSession();
+
 app.MapRazorPages();
 app.MapControllers();
 
 app.Run();
+

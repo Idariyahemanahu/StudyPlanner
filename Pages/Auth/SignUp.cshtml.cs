@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using CreateDbFromScratch.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 namespace MyApp.Namespace
 {
     public class SignUpModel : PageModel
@@ -10,7 +11,7 @@ namespace MyApp.Namespace
         private readonly UserContext _context;
 
         [BindProperty]
-        public User NewUser { get; set; }
+        public User NewUser { get; set; } = null!;
 
         public SignUpModel(UserContext context)
         {
@@ -23,6 +24,12 @@ namespace MyApp.Namespace
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (NewUser == null)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid form submission.");
+                return Page();
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -41,6 +48,7 @@ namespace MyApp.Namespace
 
             _context.Users.Add(NewUser);
             await _context.SaveChangesAsync();
+            HttpContext.Session.SetString("UserName", NewUser.Name);
             return RedirectToPage("/Index");
         }
     }

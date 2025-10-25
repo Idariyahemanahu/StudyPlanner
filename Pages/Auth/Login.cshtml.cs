@@ -3,11 +3,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using CreateDbFromScratch.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+
 namespace MyApp.Namespace
 {
     public class LoginModel : PageModel
     {
         private readonly UserContext _context;
+        
+        //property bindings for email and password
+        [BindProperty]
+        public string Email { get; set; }= null!;
+
+        [BindProperty]
+        public string Password { get; set; }= null!;
 
 
         public LoginModel(UserContext context)
@@ -17,25 +26,26 @@ namespace MyApp.Namespace
         public void OnGet()
         {
         }
-        public async Task<IActionResult> OnPostAsync(string Email, string password)
+        public async Task<IActionResult> OnPostAsync()
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == Email);
-            if (user == null)
+            var User = await _context.Users.FirstOrDefaultAsync(u => u.Email == Email);
+            if (User == null)
             {
                 ModelState.AddModelError(string.Empty, "No user found.");
                 return Page();
             }
             var Hasher = new PasswordHasher<User>();
-            var result = Hasher.VerifyHashedPassword(user, user.Password, password);
+            var result = Hasher.VerifyHashedPassword(User, User.Password, Password);
             if (result == PasswordVerificationResult.Success)
             {
                 //valid credentials
+                HttpContext.Session.SetString("UserName", User.Name);
                 return RedirectToPage("/Index");
             }
             else
             {
                 //invalid credentials
-                ModelState.AddModelError(string.Empty, "Invalid Credentials.");
+                ModelState.AddModelError(string.Empty, "Invalid credentials.");
                 return Page();
             }
         }

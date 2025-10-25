@@ -3,6 +3,10 @@
 @model IndexModel
 
 <div>
+     @if (!string.IsNullOrEmpty(Model.UserName))
+    {
+        <h2>Welcome, @Model.UserName!</h2>
+    }
     <h2>Database Configuration</h2>
     
     @{
