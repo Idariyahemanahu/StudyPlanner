@@ -59,7 +59,6 @@ namespace MyApp.Namespace
                 return Page();
             }
             var Hasher = new PasswordHasher<User>();
-
             var HashedPassword = Hasher.HashPassword(NewUser, NewUser.Password);
 
             NewUser.Password = HashedPassword;
