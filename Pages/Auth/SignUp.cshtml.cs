@@ -12,6 +12,18 @@ namespace MyApp.Namespace
 
         [BindProperty]
         public User NewUser { get; set; } = null!;
+        private readonly string[] allowedDomains = 
+        {
+            "gmail.com",
+            "yahoo.com",
+            "outlook.com",
+            "hotmail.com",
+            "live.com",
+            "icloud.com",
+            "me.com",
+            "mac.com"
+        };
+
 
         public SignUpModel(UserContext context)
         {
@@ -38,6 +50,12 @@ namespace MyApp.Namespace
             if (existingUser != null)
             {
                 ModelState.AddModelError(string.Empty, "Email is already registered.");
+                return Page();
+            }
+            var domain = NewUser.Email.Split('@').Last().ToLower();
+            if (!allowedDomains.Contains(domain))
+            {
+                ModelState.AddModelError("NewUser.Email", $"Only {string.Join(", ", allowedDomains)} emails are allowed.");
                 return Page();
             }
             var Hasher = new PasswordHasher<User>();
