@@ -10,13 +10,13 @@ namespace MyApp.Namespace
     public class LoginModel : PageModel
     {
         private readonly UserContext _context;
-        
+
         //property bindings for email and password
         [BindProperty]
-        public string Email { get; set; }= null!;
+        public string Email { get; set; } = null!;
 
         [BindProperty]
-        public string Password { get; set; }= null!;
+        public string Password { get; set; } = null!;
 
 
         public LoginModel(UserContext context)

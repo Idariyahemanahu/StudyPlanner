@@ -12,7 +12,7 @@ namespace MyApp.Namespace
 
         [BindProperty]
         public User NewUser { get; set; } = null!;
-        private readonly string[] allowedDomains = 
+        private readonly string[] allowedDomains =
         {
             "gmail.com",
             "yahoo.com",
@@ -59,7 +59,7 @@ namespace MyApp.Namespace
                 return Page();
             }
             var Hasher = new PasswordHasher<User>();
- 
+
             var HashedPassword = Hasher.HashPassword(NewUser, NewUser.Password);
 
             NewUser.Password = HashedPassword;

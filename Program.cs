@@ -1,6 +1,6 @@
 using CreateDbFromScratch.Model;
-using Microsoft.OpenApi.Models;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+//using Microsoft.OpenApi.Models;
+//using Pomelo.EntityFrameworkCore.MySql.Infrastructure;/
 using Microsoft.EntityFrameworkCore;
 
 DotNetEnv.Env.Load();
