@@ -8,7 +8,7 @@ namespace MyApp.Namespace
 {
     public class SignUpModel : PageModel
     {
-        private readonly UserContext _context;
+        private readonly AppDbContext _context;
 
         [BindProperty]
         public User NewUser { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace MyApp.Namespace
         };
 
 
-        public SignUpModel(UserContext context)
+        public SignUpModel(AppDbContext context)
         {
             _context = context;
         }

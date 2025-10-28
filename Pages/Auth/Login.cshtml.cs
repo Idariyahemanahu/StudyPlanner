@@ -9,7 +9,7 @@ namespace MyApp.Namespace
 {
     public class LoginModel : PageModel
     {
-        private readonly UserContext _context;
+        private readonly AppDbContext _context;
 
         //property bindings for email and password
         [BindProperty]
@@ -19,7 +19,7 @@ namespace MyApp.Namespace
         public string Password { get; set; } = null!;
 
 
-        public LoginModel(UserContext context)
+        public LoginModel(AppDbContext context)
         {
             _context = context;
         }

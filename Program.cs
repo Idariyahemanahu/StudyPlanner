@@ -28,7 +28,7 @@ var password = dbConfig["Password"];
 // Construct the connection string using string interpolation
 var connectionString = $"server={server};port={port};database={database};user={user};password={password}";
 
-builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
 // Add Session Services
