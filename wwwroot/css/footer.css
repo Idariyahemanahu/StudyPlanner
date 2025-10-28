@@ -1,0 +1,186 @@
+/*
+ * =========================================
+ * FOOTER STYLES
+ * =========================================
+ */
+
+.custom-footer {
+    background-color: #0A2533; /* Darker background to separate from body */
+    color: #E0E0E0;           
+    padding: 40px 5%;          
+    font-size: 0.9rem;
+    border-top: 1px solid #1e485c; /* Subtle top border */
+}
+
+/* * =========================================
+ * NEW 2-ROW GRID SYSTEM
+ * =========================================
+ */
+.footer-row {
+    display: grid;
+    gap: 30px; /* Space between columns */
+    margin-bottom: 30px;
+}
+
+/* Top Row: 2 Columns (StudyPlanner | Get In Touch) */
+.footer-row-top {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 2-col */
+}
+
+/* Bottom Row: 4 Columns (Contact | Company | Help | Follow Us) */
+.footer-row-bottom {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive 4-col */
+}
+
+/* =========================================
+ * GENERAL SECTION STYLING
+ * =========================================
+ */
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #FFFFFF; /* Bright white headings */
+}
+
+.footer-section p,
+.footer-section ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #E0E0E0; /* Light text for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #4CAF50; /* Your green accent color */
+    text-decoration: underline;
+}
+
+/* Icon links in CONTACT */
+.footer-section ul li a i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+    color: #4CAF50; /* Green icons */
+}
+
+/* =========================================
+ * NEWSLETTER (GET IN TOUCH)
+ * =========================================
+ */
+.footer-subscribe {
+    display: flex;
+    background-color: #083344; /* Match body background */
+    border: 1px solid #1e485c;
+    border-radius: 30px; 
+    padding: 5px;
+    overflow: hidden; /* Ensure rounded corners are clean */
+}
+
+.footer-subscribe input[type="email"] {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.footer-subscribe input[type="email"]::placeholder {
+    color: #999;
+}
+
+.footer-subscribe button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px; 
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-subscribe button:hover {
+    background-color: #45a049;
+}
+
+/* =========================================
+ * SOCIAL & BOTTOM BAR
+ * =========================================
+ */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; 
+    width: 36px;
+    height: 36px;
+    background-color: #FFFFFF;
+    color: #083344;           
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    transform: translateY(-2px); /* Subtle hover effect */
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom-bar {
+    border-top: 1px solid #1e485c;
+    padding-top: 20px;
+    margin-top: 20px; 
+    text-align: center;
+    font-size: 0.85rem;
+    color: #a0aec0; 
+}
+
+.footer-bottom-bar a {
+    color: #a0aec0;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-bottom-bar a:hover {
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+/* * =========================================
+ * LAYOUT FIX
+ * This rule pushes the footer to the bottom.
+ * =========================================
+ */
+main {
+    flex-grow: 1; /* This is the key! It makes the main content fill the empty space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0; /* Adds spacing so card won't touch header/footer */
+}
+

@@ -86,6 +86,7 @@ main {
 
 /* FIX: Add spacing between button and link */
 .switch-form-link {
+    color: black;
     text-align: center;
     margin-top: 1.5rem; /* This adds the needed space */
     font-size: 0.9rem;

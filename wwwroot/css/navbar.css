@@ -1,52 +1,105 @@
-/* Header and Navigation Bar */
-header {
-    width: 100%;
-    padding: 20px 5%;
-    box-sizing: border-box;
+/* === NEW COLOR SCHEME === */
+/* Root variables for easy color management */
+:root {
+    --primary-bg: #083344; /* Dark Cyan Background */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --active-bg: #ffffff;
+    --active-text: #4CAF50; /* Green Active Text */
+    --hover-text: #ffffff;
 }
 
+/* === GENERAL STYLES === */
+
+/* This reset prevents padding from breaking layouts */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+/* End of reset */
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-secondary); /* Default text color for the site */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 70px; /* Offset for fixed navbar */
+}
+
+main {
+    flex-grow: 1; /* Pushes footer to the bottom */
+}
+
+/* General link style, can be overridden */
+a {
+    color: var(--active-text);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* === NAVIGATION BAR === */
 .navbar-custom {
+    background-color: var(--primary-bg);
+    padding: 1rem 2rem;
+    width: 100%;
+    position: fixed; /* Fixes navbar to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* <-- THIS IS THE FIX */
 }
 
 .navbar-brand {
-    font-size: 1.8rem;
-    color: #ffffff;
+    color: var(--text-primary);
+    font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
 }
-
-.navbar-nav {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.navbar-brand:hover {
+    text-decoration: none;
+    color: var(--text-primary);
 }
 
-.nav-item {
-    margin-left: 20px;
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between links */
 }
 
 .nav-link {
-    color: #ffffff;
+    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 1rem;
     font-weight: 500;
-    padding: 8px 16px;
+    font-size: 0.95rem;
+    padding: 8px 16px; /* Uniform padding */
     border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--hover-text);
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
 }
 
-.nav-link.active-btn {
-    background-color: #ffffff;
-    color: #2E7D32;
+/* This is the style for the ACTIVE page link */
+.active-btn {
+    background-color: var(--active-bg);
+    color: var(--active-text) !important; /* Green Active Text */
     font-weight: 600;
 }
 
