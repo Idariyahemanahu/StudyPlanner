@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 namespace CreateDbFromScratch.Model
 {
@@ -16,6 +15,7 @@ namespace CreateDbFromScratch.Model
         public string Email { get; set; } = string.Empty;
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; } = string.Empty;
+
         public ICollection<Subject> Subjects { get; set; } = new List<Subject>();
     }
 }

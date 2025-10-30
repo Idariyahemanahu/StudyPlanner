@@ -15,6 +15,11 @@ namespace CreateDbFromScratch.Model
                 .WithMany(u => u.Subjects)
                 .HasForeignKey(s => s.Id)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Work>()
+                .HasOne(w => w.Subject)
+                .WithMany(s => s.Works)
+                .HasForeignKey(w => w.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
