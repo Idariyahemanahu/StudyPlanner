@@ -17,6 +17,7 @@ namespace CreateDbFromScratch.Model
         public string Password { get; set; } = string.Empty;
 
         public ICollection<Subject> Subjects { get; set; } = new List<Subject>();
+        public ICollection<Work> Works { get; set; } = new List<Work>();
     }
 }
 

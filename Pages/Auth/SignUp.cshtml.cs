@@ -46,13 +46,15 @@ namespace MyApp.Namespace
             {
                 return Page();
             }
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == NewUser.Email);
-            if (existingUser != null)
+            NewUser.Email = (NewUser.Email?.Trim().ToLower()) ?? string.Empty;
+            //var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == NewUser.Email);
+            bool existingUser = await _context.Users.AnyAsync(u => u.Email == NewUser.Email);
+            if (existingUser)
             {
                 ModelState.AddModelError(string.Empty, "Email is already registered.");
                 return Page();
             }
-            var domain = NewUser.Email.Split('@').Last().ToLower();
+            var domain = NewUser.Email.Split('@').Last();
             if (!allowedDomains.Contains(domain))
             {
                 ModelState.AddModelError("NewUser.Email", $"Only {string.Join(", ", allowedDomains)} emails are allowed.");

@@ -29,6 +29,7 @@ namespace MyApp.Namespace
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            Email = (Email?.Trim().ToLower()) ?? string.Empty;
             var User = await _context.Users.FirstOrDefaultAsync(u => u.Email == Email);
             if (User == null)
             {
