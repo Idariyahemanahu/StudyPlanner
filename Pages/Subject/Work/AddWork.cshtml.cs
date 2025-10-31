@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
 using Microsoft.EntityFrameworkCore;
+
 using CreateDbFromScratch.Model;
 namespace MyApp.Namespace
 {
@@ -25,7 +25,14 @@ namespace MyApp.Namespace
             {
                 return Page();
             }
-            bool Exists = await _context.Works.AnyAsync(w => w.WorkName == NewWork.WorkName && w.SubjectId == NewWork.SubjectId);
+            var UserId = HttpContext.Session.GetInt32("UserId");
+
+            if (UserId == null)
+            {
+                ModelState.AddModelError("", "Session expired or user not logged in.");
+                return Page();
+            }
+            bool Exists = await _context.Works.AnyAsync(w => w.WorkName == NewWork.WorkName && w.Id == UserId);
             if (Exists)
             {
                 ModelState.AddModelError(string.Empty, "Work  already exists.");
@@ -33,7 +40,7 @@ namespace MyApp.Namespace
             }
             _context.Works.Add(NewWork);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Index");
+            return RedirectToPage("/test/Test");
         }
     }
 }

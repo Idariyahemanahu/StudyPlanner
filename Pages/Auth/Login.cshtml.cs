@@ -42,6 +42,7 @@ namespace MyApp.Namespace
             {
                 //valid credentials
                 HttpContext.Session.SetString("UserName", User.Name);
+                HttpContext.Session.SetInt32("UserId", User.Id);
                 return RedirectToPage("/Index");
             }
             else

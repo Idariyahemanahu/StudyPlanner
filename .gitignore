@@ -32,6 +32,7 @@ appsettings.Local.json
 # (Ignore only if you restore wwwroot/lib via LibMan or npm)
 wwwroot/lib/
 Migrations/
+Pages/test/
 # ===============================
 # Logs, Temp, Cache
 # ===============================

@@ -28,7 +28,16 @@ namespace MyApp.Namespace
             {
                 return Page();
             }
-            bool Exists = await _context.Subjects.AnyAsync(s => s.SubjectName == NewSubject.SubjectName && s.Id == NewSubject.Id);
+            var UserId = HttpContext.Session.GetInt32("UserId");
+
+            if (UserId == null)
+            {
+                ModelState.AddModelError("", "Session expired or user not logged in.");
+                return Page();
+            }
+
+            // use userId
+            bool Exists = await _context.Subjects.AnyAsync(s => s.SubjectName == NewSubject.SubjectName && s.Id == UserId);
             if (Exists)
             {
                 ModelState.AddModelError(string.Empty, "Subject already exists.");
@@ -36,7 +45,7 @@ namespace MyApp.Namespace
             }
             _context.Subjects.Add(NewSubject);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/Index");
+            return RedirectToPage("/test/Test");
         }
     }
 }

@@ -40,7 +40,7 @@ namespace CreateDbFromScratch.Model
         public Subject Subject { get; set; } = null!;
 
         // Foreign key to User
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public User User { get; set; } = null!;
     }
 }
