@@ -1,38 +1,35 @@
 ﻿@page
 @model MyApp.Namespace.AddWorkModel
-@{
-    <form method="post" class="text-white">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <label  asp-for="NewWork.WorkName">Work name</label>
-            <input asp-for="NewWork.WorkName" class="form-control" placeholder="" type="text">
-        </div>
-        <div class="form-group">
-            <label  asp-for="NewWork.Subject">Work subject</label>
-            <input asp-for="NewWork.Subject" class="form-control" type="text" placeholder="" />
-        </div>
 
-        <div class="form-group">
-            <label  asp-for="NewWork.DateMeaning">Date meaning</label>
-            <select asp-for="NewWork.DateMeaning" class="form-control" type="" placeholder="" >
-                <option value="DueDate"></option>
-                <option value="Important">Important</option>
-                <option value="Exam">Exam</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label  asp-for="NewWork.Date">Date</label>
-            <input asp-for="NewWork.Date" class="form-control" type="date" placeholder="" />
-        </div>
-        <div class="form-group">
-            <label  asp-for="NewWork.WorkStatus">Work status</label>
-            <select asp-for="NewWork.WorkStatus" class="form-control" type="" placeholder="" >
-                <option value="Pending" default>Pending</option>
-                <option value="Complete">Complete</option>
-                <option value="Overdue">Overdue</option>
-            </select>
-        </div>
-        
-        <button type="submit" class="btn-primary">Add Work</button>
-    </form>
-}
+<form method="post" class="text-white w-100">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="NewWork.WorkName">Work name</label>
+        <input asp-for="NewWork.WorkName" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewWork.SubjectId">Work subject</label>
+        <select asp-for="NewWork.SubjectId" asp-items="Model.SubjectList" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewWork.DateType">Date Type</label>
+        <select asp-for="NewWork.DateType" class="form-control"
+    asp-items="Model.DateTypeList">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewWork.WorkStatus">Work status</label>
+        <select asp-for="NewWork.WorkStatus" asp-items="Model.WorkStatusList" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewWork.Date">Date</label>
+        <input asp-for="NewWork.Date" class="form-control" type="date">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Work</button>
+</form>

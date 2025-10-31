@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace CreateDbFromScratch.Model
 {
-    public enum DateMeaning
+    public enum DateType
     {
         [Display(Name = "Exam")]
         Exam,
@@ -32,7 +32,7 @@ namespace CreateDbFromScratch.Model
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; } = DateTime.Now;
 
-        public DateMeaning DateMeaning { get; set; }
+        public DateType DateType { get; set; }
 
         public WorkStatus WorkStatus { get; set; } = WorkStatus.Pending;
         // Foreign key to Subject

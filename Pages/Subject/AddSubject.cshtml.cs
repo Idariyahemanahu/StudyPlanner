@@ -28,8 +28,7 @@ namespace MyApp.Namespace
             {
                 return Page();
             }
-            var UserId = HttpContext.Session.GetInt32("UserId");
-
+            int? UserId = HttpContext.Session.GetInt32("UserId");
             if (UserId == null)
             {
                 ModelState.AddModelError("", "Session expired or user not logged in.");
@@ -43,6 +42,7 @@ namespace MyApp.Namespace
                 ModelState.AddModelError(string.Empty, "Subject already exists.");
                 return Page();
             }
+            NewSubject.Id = UserId.Value; // Set the user ID for the new subject
             _context.Subjects.Add(NewSubject);
             await _context.SaveChangesAsync();
             return RedirectToPage("/test/Test");

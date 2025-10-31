@@ -29,12 +29,12 @@ namespace CreateDbFromScratch.Model
             modelBuilder.Entity<Work>()
                 .HasOne(w => w.User)
                 .WithMany(u => u.Works)
-                .HasForeignKey(w => w.UserId)
+                .HasForeignKey(w => w.Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Enum conversions
             modelBuilder.Entity<Work>()
-                .Property(w => w.DateMeaning)
+                .Property(w => w.DateType)
                 .HasConversion<string>();
 
             modelBuilder.Entity<Work>()
