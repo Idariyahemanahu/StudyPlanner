@@ -1,12 +1,11 @@
 ﻿@page
 @model MyApp.Namespace.AddSubjectModel
-
-    <form method="post" class="text-white">
+<form method="post" class="text-white">
         <div class="form-group">
-            <label  asp-for="NewSubject.SubjectName">Subject name</label>
+            <label  asp-for="NewSubject.SubjectName">subject name</label>
             <input asp-for="NewSubject.SubjectName" class="form-control" placeholder="" type="text">
         </div>
         <div asp-validation-summary="All" class="text-danger"></div>
-        <button type="submit" class="btn-primary">Add Subject </button>
-    </form>
+        <button type="submit" class="btn-primary">add subject </button>
+</form>
 

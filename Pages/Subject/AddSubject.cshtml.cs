@@ -20,6 +20,12 @@ namespace MyApp.Namespace
         }
         public void OnGet()
         {
+            int? UserId = HttpContext.Session.GetInt32("UserId");
+            if (!UserId.HasValue)
+            {
+                ModelState.AddModelError("", "Session expired or user not logged in.");
+                return;
+            }
 
         }
         public async Task<IActionResult> OnPostAsync()
@@ -29,7 +35,7 @@ namespace MyApp.Namespace
                 return Page();
             }
             int? UserId = HttpContext.Session.GetInt32("UserId");
-            if (UserId == null)
+            if (!UserId.HasValue)
             {
                 ModelState.AddModelError("", "Session expired or user not logged in.");
                 return Page();

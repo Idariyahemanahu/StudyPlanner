@@ -45,18 +45,18 @@ namespace MyApp.Namespace
             }
             int? UserId = HttpContext.Session.GetInt32("UserId");
 
-            if (UserId == null)
+            if (!UserId.HasValue)
             {
                 ModelState.AddModelError("", "Session expired or user not logged in.");
                 return Page();
             }
-            bool Exists = await _context.Works.AnyAsync(w => w.WorkName == NewWork.WorkName && w.Id == UserId);
+            bool Exists = await _context.Works.AnyAsync(w => w.SubjectId == NewWork.SubjectId && w.WorkName == NewWork.WorkName);
             if (Exists)
             {
                 ModelState.AddModelError(string.Empty, "Work  already exists.");
                 return Page();
             }
-            NewWork.Id = UserId.Value; // Set the user ID for the new work
+            NewWork.Id = UserId.Value;
             _context.Works.Add(NewWork);
             await _context.SaveChangesAsync();
             return RedirectToPage("/test/Test");

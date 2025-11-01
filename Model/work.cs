@@ -1,4 +1,5 @@
 
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 namespace CreateDbFromScratch.Model
 {
@@ -36,12 +37,17 @@ namespace CreateDbFromScratch.Model
 
         public WorkStatus WorkStatus { get; set; } = WorkStatus.Pending;
         // Foreign key to Subject
+
+        [ForeignKey("Subject")]
         public int SubjectId { get; set; }
-        public Subject Subject { get; set; } = null!;
+
+        public Subject? Subject { get; set; }
 
         // Foreign key to User
+
+        [ForeignKey("User")]
         public int Id { get; set; }
-        public User User { get; set; } = null!;
+        public User? User { get; set; }
     }
 }
 

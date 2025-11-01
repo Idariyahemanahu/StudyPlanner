@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using CreateDbFromScratch.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
 namespace MyApp.Namespace
 {
     public class SignUpModel : PageModel
@@ -68,6 +67,7 @@ namespace MyApp.Namespace
             _context.Users.Add(NewUser);
             await _context.SaveChangesAsync();
             HttpContext.Session.SetString("UserName", NewUser.Name);
+            HttpContext.Session.SetInt32("UserId", NewUser.Id);
             return RedirectToPage("/Index");
         }
     }

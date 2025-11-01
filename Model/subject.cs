@@ -13,7 +13,7 @@ namespace CreateDbFromScratch.Model
         [ForeignKey("User")]
         public int Id { get; set; }
 
-        public User User { get; set; } = null!;
+        public User? User { get; set; }
         public ICollection<Work> Works { get; set; } = new List<Work>();
     }
 }
