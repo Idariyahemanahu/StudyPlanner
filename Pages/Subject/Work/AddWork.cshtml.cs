@@ -59,7 +59,7 @@ namespace MyApp.Namespace
             NewWork.Id = UserId.Value;
             _context.Works.Add(NewWork);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/test/Test");
+            return RedirectToPage("/Subject/Todo");
         }
     }
 }

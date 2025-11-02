@@ -51,7 +51,7 @@ namespace MyApp.Namespace
             NewSubject.Id = UserId.Value; // Set the user ID for the new subject
             _context.Subjects.Add(NewSubject);
             await _context.SaveChangesAsync();
-            return RedirectToPage("/test/Test");
+            return RedirectToPage("/Subject/Todo");
         }
     }
 }

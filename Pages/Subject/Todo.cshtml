@@ -1,0 +1,108 @@
+﻿@page
+@model MyApp.Namespace.TodoModel
+
+@*
+  @{<h2 class="text-white">Subjects and Their Works</h2>
+
+  
+  @if (Model.Subjects.Count == 0)
+  {
+      <p class="text-info">No subjects found.</p>
+  }
+  else
+  {
+      <table class="table table-dark table-striped mt-3">
+          <thead>
+              <tr>
+                  <th>Subject Name</th>
+                  <th>Works</th>
+              </tr>
+          </thead>
+          <tbody>
+          @foreach(var subject in Model.Subjects)
+          {
+              <tr>
+                  <td>@subject.SubjectName</td>
+                  <td>
+                      @if (subject.Works.Count == 0)
+                      {
+                          <span class="text-muted">No works assigned.</span>
+                      }
+                      else
+                      {
+                          <ul>
+                          @foreach(var work in subject.Works)
+                          {
+                              <li>
+                                  <strong>@work.WorkName</strong>  
+                                  - @work.DateType
+                                  - @work.Date.ToString("dd-MM-yyyy")  
+                                  - <em>@work.WorkStatus</em>
+                              </li>
+                          }
+                          </ul>
+                      }
+                  </td>
+              </tr>
+          }
+          </tbody>
+      </table>
+    }
+  }
+*@
+@page
+@model MyApp.Namespace.TodoModel
+
+<h2>Subjects and Their Works</h2>
+
+@if (Model.Subjects.Count == 0)
+{
+    <p>No subjects found.</p>
+}
+else
+{
+    @foreach (var subject in Model.Subjects)
+    {
+        <div>
+            <h3>
+                @subject.SubjectName
+                <a asp-page="/Subject/ReNameSubject"
+                   asp-route-id="@subject.SubjectId">Rename</a>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@subject.SubjectId">
+                    <button type="submit">Delete</button>
+                    @Html.AntiForgeryToken()
+                </form>
+            </h3>
+
+            @if (subject.Works.Count == 0)
+            {
+                <p>No works assigned.</p>
+            }
+            else
+            {
+                <ul>
+                    @foreach (var work in subject.Works)
+                    {
+                        <li>
+                            <strong>@work.WorkName</strong>  
+                            - @work.DateType  
+                            - @work.Date.ToString("dd-MM-yyyy")  
+                            - <em>@work.WorkStatus</em>
+                            <a asp-page="/Subject/EditWork"
+                               asp-route-workId="@work.WorkId"
+                               asp-route-subjectId="@subject.SubjectId">
+                                Edit
+                            </a>
+                            <a asp-page="/Subject/DeleteWork"
+                               asp-route-workId="@work.WorkId"
+                               asp-route-subjectId="@subject.SubjectId">
+                                Delete
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+        <hr />
+    }
+}
