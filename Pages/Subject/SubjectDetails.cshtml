@@ -1,0 +1,52 @@
+﻿@page "{SubjectId:int}"
+@model MyApp.Namespace.SubjectDetailsModel
+@{
+    ViewData["Title"] = "Subject Details";
+}
+
+<h2>Subject Details</h2>
+
+@if (Model.Subject == null)
+{
+    <p>Subject not found.</p>
+}
+else
+{
+    <div style="margin-bottom: 20px;">
+        <h3>@Model.Subject.SubjectName</h3>
+
+    </div>
+
+
+    @if (Model.Works == null || !Model.Works.Any())
+    {
+        <p>No works available for this subject.</p>
+    }
+    else
+    {
+        <table border="1" cellpadding="6" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Work ID</th>
+                    <th>Work Name</th>
+                    <th>Date</th>
+                    <th>Date Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var work in Model.Works)
+                {
+                    <tr>
+                        <td>@work.WorkId</td>
+                        <td>@work.WorkName</td>
+                        <td>@work.Date.ToString("dd-MM-yyyy")</td>
+                        <td>@work.DateType</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+<br />
+<a asp-page="/Subject/ViewSubject">Back to Subjects</a>

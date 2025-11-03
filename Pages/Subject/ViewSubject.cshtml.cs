@@ -1,23 +1,20 @@
-
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CreateDbFromScratch.Model;
 using Microsoft.AspNetCore.Mvc;
+
 namespace MyApp.Namespace
 {
-    public class TodoModel : PageModel
+    public class ViewSubjectModel : PageModel
     {
         private readonly AppDbContext _context;
-
-        [BindProperty]
-        public int SubjectId { get; set; }
-        public TodoModel(AppDbContext context)
+        public ViewSubjectModel(AppDbContext context)
         {
             _context = context;
         }
-
+        
         public List<Subject> Subjects { get; set; } = new();
-
+        
         public async Task<IActionResult> OnGetAsync()
         {
             // Load all subjects with their related works
@@ -30,19 +27,10 @@ namespace MyApp.Namespace
 
             Subjects = await _context.Subjects
                 .Where(s => s.Id == UserId)
-                .Include(s => s.Works)
                 .ToListAsync();
             return Page();
         }
-        public async Task<IActionResult> OnPostDeleteAsync()
-        {
-            var subject = await _context.Subjects.FindAsync(SubjectId);
-            if (subject != null)
-            {
-                _context.Subjects.Remove(subject);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToPage("/Index");
-        }
+
+        
     }
 }

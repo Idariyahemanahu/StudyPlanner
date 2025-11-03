@@ -50,8 +50,6 @@
     }
   }
 *@
-@page
-@model MyApp.Namespace.TodoModel
 
 <h2>Subjects and Their Works</h2>
 
@@ -68,7 +66,7 @@ else
                 @subject.SubjectName
                 <a asp-page="/Subject/ReNameSubject"
                    asp-route-id="@subject.SubjectId">Rename</a>
-                <form method="post" asp-page-handler="Delete" asp-route-id="@subject.SubjectId">
+                <form method="post" asp-page-handler="Delete" asp-route-id="SubjectId">
                     <button type="submit">Delete</button>
                     @Html.AntiForgeryToken()
                 </form>

@@ -1,0 +1,42 @@
+﻿@page
+@model MyApp.Namespace.ViewSubjectModel
+@{
+}
+@if (!Model.Subjects.Any())
+{
+    <p>No subjects found.</p>
+}
+else
+{
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Subject Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var subject in Model.Subjects)
+        {
+            <tr>
+                <td>@subject.SubjectId</td>
+
+                <!-- ✅ Subject name links to SubjectDetails page -->
+                <td>
+                    <a asp-page="/Subject/SubjectDetails"
+                       asp-route-SubjectId="@subject.SubjectId"
+                       style="text-decoration:none; color:blue;">
+                        @subject.SubjectName
+                    </a>
+                </td>
+
+
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<br />
+<a asp-page="/Dashboard">Back to Dashboard</a>
