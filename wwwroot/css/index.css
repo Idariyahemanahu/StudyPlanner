@@ -1,0 +1,425 @@
+/* === GLOBAL STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f6f9fc, #eef4ff);
+    font-family: 'Poppins', sans-serif;
+    color: #1e293b;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* === NAVBAR === */
+.navbar-custom {
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .navbar-brand:hover {
+        color: #1e40af;
+    }
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #334155;
+    transition: color 0.3s, transform 0.2s;
+}
+
+    .nav-link:hover {
+        color: #2563eb;
+        transform: translateY(-2px);
+    }
+
+.active-btn {
+    color: #2563eb;
+    font-weight: 600;
+}
+.btn-myprimary {
+    width: 100%;
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+    .btn-myprimary:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px);
+        color: aliceblue;
+    }
+
+/* === HERO SECTION === */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 10%;
+    gap: 50px;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        margin: 1rem 0 2rem;
+        color: #475569;
+    }
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+    .btn-primary:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px);
+    }
+
+.btn-secondary {
+    background-color: transparent;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+    .btn-secondary:hover {
+        background-color: #2563eb;
+        color: white;
+    }
+
+/* === HERO IMAGE === */
+.hero-image img {
+    width: 420px;
+    max-width: 90%;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* === FEATURES === */
+.features {
+    text-align: center;
+    padding: 100px 5%;
+    background: white;
+}
+
+    .features h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 40px;
+    }
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.feature {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+    .feature:hover {
+        background: #e2e8f0;
+        transform: translateY(-5px);
+    }
+
+    .feature i {
+        font-size: 2rem;
+        color: #2563eb;
+        margin-bottom: 1rem;
+    }
+
+/* === CTA SECTION === */
+.cta {
+    text-align: center;
+    padding: 100px 5%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border-radius: 30px 30px 0 0;
+}
+
+    .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+.btn-cta {
+    background-color: white;
+    color: #2563eb;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .btn-cta:hover {
+        background-color: #f1f5f9;
+    }
+
+/* === FOOTER === */
+
+/* === FOOTER === */
+.custom-footer {
+    background-color: #1e293b; /* Dark slate background */
+    color: #cbd5e1; /* Light gray text for base */
+    padding: 70px 5% 30px; /* Padding: top, sides, bottom */
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px; /* Spacing between sections */
+    margin-bottom: 40px;
+}
+
+.footer-row-top {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #334155; /* Separator line */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and fill space */
+    min-width: 230px; /* Ensures sections wrap nicely on smaller screens */
+}
+
+    .footer-section h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 1.25rem;
+    }
+
+    .footer-section p {
+        color: #94a3b8; /* Softer gray for paragraphs */
+        margin-bottom: 1rem;
+        max-width: 300px; /* Constrains tagline width */
+    }
+
+/* Subscription Box */
+.footer-subscribe {
+    display: flex;
+    gap: 0.5rem;
+}
+
+    .footer-subscribe input[type="email"] {
+        flex-grow: 1; /* Input takes available space */
+        padding: 12px 20px;
+        border: 1px solid #475569;
+        background-color: #334155;
+        color: #f1f5f9;
+        border-radius: 30px; /* Matches site's button style */
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+    }
+
+        .footer-subscribe input[type="email"]::placeholder {
+            color: #94a3b8;
+        }
+
+    .footer-subscribe button {
+        background-color: #2563eb; /* Match primary button */
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .footer-subscribe button:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+/* Footer Link Lists */
+.footer-section ul {
+    list-style: none; /* Removes default bullets */
+}
+
+    .footer-section ul li {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul a {
+        text-decoration: none;
+        color: #94a3b8;
+        transition: color 0.3s;
+        display: inline-flex; /* Aligns icons and text smoothly */
+        align-items: center;
+    }
+
+        .footer-section ul a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-section ul a i {
+            margin-right: 0.75rem;
+            width: 20px; /* Ensures text aligns vertically */
+            text-align: center;
+            color: #64748b; /* Slightly muted icon color */
+        }
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #334155;
+    color: #f1f5f9;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+    .social-icon:hover {
+        background-color: #2563eb;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+/* Bottom Copyright Bar */
+.footer-bottom-bar {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 10px; /* Reduced from 40px since footer-row already has margin */
+    border-top: 1px solid #334155;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+    .footer-bottom-bar a {
+        color: #94a3b8;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        transition: color 0.3s;
+    }
+
+        .footer-bottom-bar a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .navbar-nav {
+        gap: 1rem;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-subscribe {
+        flex-direction: column;
+    }
+}

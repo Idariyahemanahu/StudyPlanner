@@ -24,6 +24,8 @@ var port = dbConfig["Port"];
 var database = dbConfig["DatabaseName"];
 var user = dbConfig["Username"];
 var password = dbConfig["Password"];
+//Builder Services for DbContext with MySQL
+builder.Services.AddHttpContextAccessor();
 
 // Construct the connection string using string interpolation
 var connectionString = $"server={server};port={port};database={database};user={user};password={password}";

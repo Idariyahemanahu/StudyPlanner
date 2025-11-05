@@ -1,0 +1,19 @@
+/* 1. Import the reusable form card styles */
+@import url("form-card.css");
+
+/*
+ * 2. This CSS is for the login page ONLY
+ * It adds the container to center the card vertically.
+*/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    min-height: calc(100vh - 160px); /* 100vh - (header + footer height) */
+}
+
+    /* 3. Override the margin from form-card.css for true centering */
+    .login-container .account-card {
+        margin: 0; /* Remove the '50px auto' margin */
+    }

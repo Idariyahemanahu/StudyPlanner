@@ -23,3 +23,52 @@ body {
 .text-danger
 {
   color:#dc2626;}
+.main-jumbotron {
+    position: relative;
+    background: url('/media/2387118.jpg') center/cover no-repeat;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.jumbotron-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+    .jumbotron-content h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .jumbotron-content p {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+
+.btn-jumbotron {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+    .btn-jumbotron:hover {
+        background: #1d4ed8;
+    }
+

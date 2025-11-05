@@ -1,0 +1,171 @@
+/*
+ * CSS for the About Us Page
+ */
+
+/* 1. Hero Section */
+.about-hero {
+    text-align: center;
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #f6f9fc, #eef4ff); /* Matches your body bg */
+}
+
+    .about-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+    }
+
+    .about-hero .subtitle {
+        font-size: 1.2rem;
+        color: #475569;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+/* 2. "What It Is" Section */
+.about-section-container {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+    .about-text h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+        color: #475569;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+.about-image {
+    flex: 1;
+}
+
+    .about-image img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+/* 3. "What It Does" (Features) Section */
+.features-section {
+    background-color: #f8fafc; /* Light gray background */
+    padding: 80px 5%;
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .features-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 50px;
+    }
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three-column grid */
+    gap: 30px;
+    text-align: left;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card i {
+        font-size: 2.5rem;
+        color: #2563eb; /* Your primary blue */
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+        font-size: 1rem;
+        color: #475569;
+        line-height: 1.6;
+    }
+
+/* 4. Call to Action Section */
+.about-cta {
+    text-align: center;
+    padding: 80px 5%;
+    background-color: #ffffff;
+}
+
+    .about-cta h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+    }
+
+    .about-cta p {
+        font-size: 1.1rem;
+        color: #475569;
+        margin-bottom: 2rem;
+    }
+
+/* Re-using your .btn-primary style */
+.btn-primary-cta {
+    background-color: #2563eb;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+    .btn-primary-cta:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px);
+    }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 992px) {
+    .about-section {
+        flex-direction: column;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

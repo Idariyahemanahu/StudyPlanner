@@ -1,0 +1,52 @@
+﻿@page
+@using CreateDbFromScratch.Model  
+@model MyApp.Namespace.WorkIndexModel
+@{
+    ViewData["Title"] = Model.Subject?.Name ?? "Work";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/work.css" />
+}
+
+<div class="work-container">
+    <div class="work-header">
+        <h1>@Model.Subject?.Name</h1>
+        <a asp-page="./WorkCreate" asp-route-subjectId="@Model.Subject?.Id" class="btn-create-work">
+            <i class="fas fa-plus"></i> Add Work
+        </a>
+    </div>
+
+    <div class="work-list">
+        @foreach (var work in Model.WorkItems)
+        {
+        <div class="work-item">
+            <div class="work-type-icon">@work.Type.ToString()[0]</div>
+
+            <div class="work-details">
+                <span class="work-title">@work.Title</span>
+                <span class="work-due">Due: @work.DueDate.ToString("MMM dd, yyyy h:mm tt")</span>
+                <span class="work-status-@work.Status.ToString()">Status: @work.Status.ToString()</span>
+            </div>
+
+            <div class="work-actions">
+                <a asp-page="./Workedit" asp-route-id="@work.Id" class="btn-action-edit">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@work.Id"
+                      onsubmit="return confirm('Are you sure you want to delete this work item?');">
+                    <input type="hidden" name="subjectId" value="@Model.Subject.Id" />
+                    <button type="submit" class="btn-action-delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        }
+
+        @if (!Model.WorkItems.Any())
+        {
+        <p>No work has been added for this subject yet.</p>
+        }
+    </div>
+</div>

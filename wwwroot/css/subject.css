@@ -1,0 +1,131 @@
+.subjects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 1rem;
+}
+
+    .subjects-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+.btn-create-subject {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .btn-create-subject:hover {
+        background-color: #1e40af;
+    }
+
+/* New Table Styles */
+/* New Table Styles */
+.table-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* ADD THIS LINE: 
+    This adds 60px of space below the container, pushing the footer down.
+    */
+    margin-bottom: 60px; /* Adjust 60px to whatever looks best */
+
+    padding: 0 1rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    overflow: hidden; /* For rounded corners */
+}
+
+.subject-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .subject-table th,
+    .subject-table td {
+        padding: 16px 20px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .subject-table th {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #475569;
+        text-transform: uppercase;
+    }
+
+    .subject-table td {
+        color: #1e293b;
+        font-weight: 500;
+    }
+
+    .subject-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+    .table-actions form {
+        display: inline;
+    }
+
+.btn-table {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+    .btn-table .fas {
+        font-size: 0.8rem;
+    }
+
+.btn-view {
+    background-color: #eef4ff;
+    color: #2563eb;
+}
+
+    .btn-view:hover {
+        background-color: #dbeafe;
+    }
+
+.btn-edit {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+    .btn-edit:hover { 
+        background-color: #e2e8f0;
+    }
+
+.btn-delete {
+    background-color: #fef2f2;
+    color: #dc3545;
+}
+
+    .btn-delete:hover {
+        background-color: #fee2e2;
+    }

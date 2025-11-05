@@ -1,0 +1,141 @@
+.work-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 5%;
+}
+
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+    .work-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+.btn-create-work {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .btn-create-work:hover {
+        background-color: #1e40af;
+    }
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.work-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.work-type-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eef4ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.work-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.work-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.work-due {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.work-status-NotStarted {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.work-status-InProgress {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2563eb;
+}
+
+.work-status-Completed {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #198754;
+    text-decoration: line-through;
+}
+
+.work-actions {
+    margin-left: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action-edit,
+.btn-action-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-action-edit {
+    color: #2563eb;
+}
+
+    .btn-action-edit:hover {
+        background-color: #eef4ff;
+    }
+
+.btn-action-delete {
+    color: #dc3545;
+}
+
+    .btn-action-delete:hover {
+        background-color: #f8d7da;
+    }

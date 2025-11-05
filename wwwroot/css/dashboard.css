@@ -1,0 +1,198 @@
+/*
+ * CSS for Dashboard
+ */
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 30px auto; /* 30px top/bottom, auto left/right */
+    padding: 0 5%; /* Matches your site's 5% padding */
+}
+
+    .dashboard-container h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 30px;
+    }
+
+/* === Dashboard Grid Layout === */
+.dashboard-grid {
+    display: grid;
+    /* Two columns: main content (2/3) and sidebar (1/3) */
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* === Dashboard Card Style === */
+.dashboard-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    animation: fadeInUp 0.5s ease-out; /* From your login.css */
+}
+
+    .dashboard-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 1rem;
+    }
+
+/* === Quick Actions Card === */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+    .btn-action:hover {
+        background-color: #1e40af;
+        transform: translateY(-2px);
+    }
+
+    /* Secondary button style */
+    .btn-action.btn-secondary {
+        background-color: transparent;
+        color: #2563eb;
+        border: 2px solid #2563eb;
+    }
+
+        .btn-action.btn-secondary:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+
+.btn-action-small {
+    background-color: #f1f5f9;
+    color: #334155;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+    .btn-action-small:hover {
+        background-color: #e2e8f0;
+    }
+
+
+
+/* === Calendar Card === */
+/* Styles for the placeholder are removed */
+/* We adjust padding for FullCalendar */
+.calendar-card {
+    padding: 1.5rem;
+    
+}
+
+/* === To-Do List Card (UPDATED) === */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Added style for empty list */
+.no-tasks {
+    color: #64748b;
+    font-style: italic;
+}
+
+/* Updated styles for the new to-do list items */
+.todo-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative; /* For tag positioning */
+}
+
+    .todo-item:last-child {
+        border-bottom: none;
+    }
+
+.work-title {
+    font-weight: 600;
+    color: #1e293b;
+    margin-right: 70px; /* Make space for the tag */
+}
+
+.work-subject {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* New styles for Overdue/Pending tags */
+.todo-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: white;
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+
+    .todo-tag.overdue {
+        background-color: #dc3545; /* Red */
+    }
+
+    .todo-tag.pending {
+        background-color: #64748b; /* Gray */
+    }
+
+
+/* === Animation (from your login.css) === */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* === Responsive === */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        /* Stack columns on top of each other */
+        grid-template-columns: 1fr;
+    }
+}

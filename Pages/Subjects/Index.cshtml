@@ -1,0 +1,57 @@
+﻿@page
+@model MyApp.Namespace.IndexModel
+@{
+    ViewData["Title"] = "My Subjects";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/subject.css" />
+}
+
+<div class="subjects-header">
+    <h1>My Subjects</h1>
+
+    <a asp-page="/Subjects/Create" class="btn-create-subject">
+        <i class="fas fa-plus"></i> Create Subject
+    </a>
+</div>
+
+<div class="table-container">
+    <table class="subject-table">
+        <thead>
+            <tr>
+                <th>Subject Name</th>
+                <th>Faculty</th>
+                <th>Semester</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model.Subjects)
+            {
+            <tr>
+                <td>@subject.Name</td>
+                <td>@subject.FacultyName</td>
+                <td>@subject.Semester</td>
+
+                <td class="table-actions">
+                    <a asp-page="/Work/WorkIndex" asp-route-subjectId="@subject.Id" class="btn-table btn-view">
+                        <i class="fas fa-tasks"></i> View Work
+                    </a>
+
+                    <a asp-page="/Subjects/Edit" asp-route-id="@subject.Id" class="btn-table btn-edit">
+                        <i class="fas fa-pencil-alt"></i> Edit
+                    </a>
+
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@subject.Id"
+                          onsubmit="return confirm('Delete this subject and all its work?');">
+                        <button type="submit" class="btn-table btn-delete">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

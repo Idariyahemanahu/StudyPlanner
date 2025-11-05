@@ -1,0 +1,62 @@
+﻿@page
+@model MyApp.Namespace.AboutModel
+@{
+    ViewData["Title"] = "About Us";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/about.css" />
+}
+
+<div class="about-hero">
+    <h1>About StudyPlanner</h1>
+    <p class="subtitle">
+        Our mission is to help you organize your academic life and achieve your goals with less stress.
+    </p>
+</div>
+
+<div class="about-section-container">
+    <div class="about-section">
+        <div class="about-text">
+            <h2>What It Is</h2>
+            <p>StudyPlanner was born from a simple idea: students need one simple, reliable place to manage everything. We were tired of juggling different apps, notebooks, and scattered calendars. We wanted a single, focused tool that brings your subjects, assignments, and schedule together in one place.</p>
+            <p>It's designed to be your central hub for all your academic work—nothing more, nothing less.</p>
+        </div>
+        <div class="about-image">
+            <img src="~/media/2007.i039.003..blogging vlogging isometric icons-10.jpg" />
+        </div>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="features-container">
+        <h2>What It Does</h2>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <i class="fas fa-book"></i>
+                <h3>Organize Subjects</h3>
+                <p>Create a dedicated space for every subject. Add your faculty name, semester, and descriptions to keep all your course information in one place.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-tasks"></i>
+                <h3>Track All Your Work</h3>
+                <p>Add assignments, quizzes, practicals, and exams for each subject. You can set due dates, work types, descriptions, and track the status of every task.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Never Miss a Deadline</h3>
+                <p>The smart dashboard automatically organizes your work. The "To-Do" list shows you what's overdue and pending, while the calendar gives you a full view of the month ahead.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="about-cta">
+    <h2>Ready to Get Organized?</h2>
+    <p>Take control of your studies today.</p>
+    <a href="/Auth/SignUp" class="btn-primary-cta">Sign Up for Free</a>
+</div>

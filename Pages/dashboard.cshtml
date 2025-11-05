@@ -1,0 +1,162 @@
+﻿@page
+@model MyApp.Namespace.dashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+    var now = DateTime.Now; // Get current time for To-Do list comparison
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+
+    <style>
+        .fc {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fc-toolbar-title {
+            font-size: 1.5rem !important;
+            font-weight: 600 !important;
+        }
+
+        .fc .fc-button {
+            background-color: #2563eb !important;
+            border-color: #2563eb !important;
+        }
+
+        .fc .fc-button-primary:hover {
+            background-color: #1e40af !important;
+        }
+
+        .fc .fc-daygrid-day.fc-day-today {
+            background-color: #eef4ff !imporant;
+        }
+
+        .fc-event.event-completed {
+            text-decoration: line-through;
+            font-style: italic;
+        }
+
+            .fc-event.event-completed .fc-event-title:before {
+                content: '\f00c'; /* Font Awesome checkmark */
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                margin-right: 6px;
+            }
+
+        .fc-event.event-overdue {
+            font-weight: 700 !important;
+        }
+
+        .todo-item {
+            position: relative;
+        }
+
+        .todo-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: white;
+            position: absolute;
+            top: 12px;
+            right: 0;
+        }
+
+            .todo-tag.overdue {
+                background-color: #dc3545;
+            }
+
+            .todo-tag.pending {
+                background-color: #64748b;
+            }
+    </style>
+}
+
+<div class="dashboard-container">
+    <h1>Your Dashboard</h1>
+    <div class="dashboard-grid">
+        <div class="dashboard-main">
+            <div class="dashboard-card quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <a asp-page="/Subjects/Index" class="btn-action">Manage Subjects</a>
+                </div>
+            </div>
+            <div class="dashboard-card calendar-card">
+                <div id='calendar'></div>
+            </div>
+        </div>
+        <div class="dashboard-sidebar">
+            <div class="dashboard-card todo-card">
+                <h3>To-Do</h3>
+                @if (!Model.ToDoList.Any())
+                {
+                <p class="no-tasks">All caught up!</p>
+                }
+                else
+                {
+                <ul class="todo-list">
+                    @foreach (var work in Model.ToDoList)
+                        {
+                    <li class="todo-item">
+                        <span class="work-title">@work.Title</span>
+                        <span class="work-subject">@work.Subject.Name</span>
+
+                        @if (work.DueDate < now)
+                                {
+                        <span class="todo-tag overdue">Overdue</span>
+                                }
+                                else
+                                {
+                        <span class="todo-tag pending">Due @work.DueDate.ToString("MMM d")</span>
+                                }
+                    </li>
+                        }
+                </ul>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                // ... your other settings (initialView, headerToolbar, etc.) ...
+                events: '/Dashboard?handler=CalendarEvents',
+                eventDisplay: 'block',
+                eventClassNames: function (arg) {
+                    return arg.event.extendedProps.className;
+                },
+                height: 300,
+
+                // -------------------------------------------------
+                //  ADD THIS FUNCTION TO FIX THE REDIRECT
+                // -------------------------------------------------
+                eventClick: function (info) {
+                    // This stops the calendar's default (and broken) redirect
+                    info.jsEvent.preventDefault();
+
+                    // --- ADD THESE TWO LINES ---
+                    console.log("Event clicked!");
+                    console.log(info.event); // This will show us the event data in the console
+
+                    // Get the event's ID (this assumes your server sends it as 'id')
+                    var workId = info.event.id;
+
+                    // This is the correct URL based on your file structure
+                    var correctUrl = `/Work/Workedit/${workId}`;
+                    // Redirect the browser to the correct page
+                    window.location.href = correctUrl;
+                }
+
+            });
+            calendar.render();
+        });
+    </script>
+}

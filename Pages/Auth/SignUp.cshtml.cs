@@ -66,7 +66,8 @@ namespace MyApp.Namespace
             _context.Users.Add(NewUser);
             await _context.SaveChangesAsync();
             HttpContext.Session.SetString("UserName", NewUser.Name);
-            return RedirectToPage("/Index");
+            HttpContext.Session.SetInt32("UserId", NewUser.Id);
+            return RedirectToPage("/dashboard");
         }
     }
 }

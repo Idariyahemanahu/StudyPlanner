@@ -1,0 +1,34 @@
+﻿@page
+@model MyApp.Namespace.CreateModel
+@{
+    ViewData["Title"] = "Create Subject";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/form-card.css" />
+}
+<div class="account-card">
+    <h1>Create New Subject</h1>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger validation-summary-errors"></div>
+
+        <div class="form-group">
+            <label asp-for="Input.Name">Subject Name</label>
+            <input asp-for="Input.Name" class="form-control" placeholder="e.g., Computer Networks" />
+            <span asp-validation-for="Input.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Input.FacultyName">Faculty Name (Optional)</label>
+            <input asp-for="Input.FacultyName" class="form-control" placeholder="e.g., Prof. Smith" />
+            <span asp-validation-for="Input.FacultyName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Input.Semester">Semester (Optional)</label>
+            <input asp-for="Input.Semester" class="form-control" type="number" min="1" max="10" placeholder="e.g., 5" />
+            <span asp-validation-for="Input.Semester" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-primary">Create Subject</button>
+    </form>
+</div>

@@ -8,6 +8,7 @@ namespace studyplanner.Pages
         private readonly ILogger<IndexModel> _logger;
 
         public string? UserName { get; set; }
+        public int ? UserId { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -16,6 +17,7 @@ namespace studyplanner.Pages
         public void OnGet()
         {
             UserName = HttpContext.Session.GetString("UserName");
+            
         }
     }
 }

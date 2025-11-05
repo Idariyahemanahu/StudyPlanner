@@ -1,26 +1,58 @@
 ﻿@page
-@inject IConfiguration Configuration
 @model IndexModel
+@{
+    ViewData["Title"] = "Welcome to StudyPlanner";
+    Layout = "_Layout"; // or your main layout
+}
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var username = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Plan Smarter. Study Better.</h1>
+        <p>Your personal  study planner — manage subjects, track progress, and achieve your goals effortlessly.</p>
+        <div class="hero-buttons">
+            @if(!string.IsNullOrEmpty(username))
+            {
+            <a asp-page="/dashboard" class="btn-primary">Get Started</a>
+            }
+            else
+            {
+            <a asp-page="/Auth/Login" class="btn-primary">Get Started</a>
+            }
 
-<div>
-     @if (!string.IsNullOrEmpty(Model.UserName))
-    {
-        <h2>Welcome, @Model.UserName!</h2>
-    }
-    <h2>Database Configuration</h2>
-    
-    @{
-        var server = Configuration["Database:Source"];
-        var port = Configuration["Database:Port"];
-        var database = Configuration["Database:DatabaseName"];
-        var username = Configuration["Database:Username"];
-        var password = Configuration["Database:Password"];
-        var connectionString = $"Server={server};Port={port};Database={database};Uid={username};Pwd={password};";
-    }
-    
-    <p>Server: @server:@port</p>
-    <p>Database: @database</p>
-    <p>Username: @username</p>
-    <p>Password: @(string.IsNullOrEmpty(password) ? "Not configured" : "***configured***")</p>
-    <p>Connection String: @connectionString</p>
-</div>
+            <a asp-page="/About" class="btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="~/media/6206973.jpg" alt="Study Planner Illustration">
+    </div>
+</section>
+
+<section class="features">
+    <h2>Everything You Need to Stay Ahead</h2>
+    <div class="feature-grid">
+        <div class="feature">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Smart Scheduling</h3>
+            <p>Auto-organize your study plan with adaptive features.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-chart-line"></i>
+            <h3>Progress Tracking</h3>
+            <p>Visualize your learning curve with weekly and monthly insights.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-brain"></i>
+            <h3>Focus Sessions</h3>
+            <p>Boost productivity using scientifically designed focus intervals.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Start Planning Your Success Today</h2>
+    <a asp-page="/Auth/Register" class="btn-cta">Join for Free</a>
+</section>
+
