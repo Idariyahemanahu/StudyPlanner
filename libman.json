@@ -1,0 +1,10 @@
+{
+  "version": "3.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "fullcalendar@6.1.19",
+      "destination": "wwwroot/lib/fullcalendar"
+    }
+  ]
+}
